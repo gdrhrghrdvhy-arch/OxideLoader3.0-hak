@@ -12,22 +12,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Generate Gradle Wrapper
+        run: gradle wrapper
         
-      - name: Setup NDK
-        uses: nttld/setup-ndk@v1
-        with:
-          ndk-version: r25c
-
       - name: Build APK
-        run: |
-          cd OxideLoader3.0-hak
-          chmod +x gradlew
-          ./gradlew assembleDebug
-
+        run: ./gradlew assembleDebug
+        
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Oxide_Cheat_APK
-          path: OxideLoader3.0-hak/app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
