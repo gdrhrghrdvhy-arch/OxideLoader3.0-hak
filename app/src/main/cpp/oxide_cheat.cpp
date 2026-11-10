@@ -19,7 +19,6 @@ typedef uint64_t u64;
 typedef uint32_t u32;
 typedef float f32;
 
-// ===== НАСТРОЙКИ =====
 struct Settings {
     std::atomic<bool> aimbot{true};
     std::atomic<bool> aim_head{true};
@@ -29,7 +28,6 @@ struct Settings {
 };
 Settings g_settings;
 
-// ===== СМЕЩЕНИЯ (ЗАМЕНИТЬ ПОД ВЕРСИЮ) =====
 struct Offsets {
     u64 gworld = 0x693f904;
     u64 ulevel = 0x30;
