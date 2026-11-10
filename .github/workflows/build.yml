@@ -22,8 +22,8 @@ jobs:
         with:
           ndk-version: r25c
 
-      - name: Generate Gradle Wrapper
-        run: gradle wrapper
+      - name: Generate Gradle Wrapper (Version 8.0)
+        run: gradle wrapper --gradle-version 8.0
 
       - name: Build APK
         run: ./gradlew assembleDebug
