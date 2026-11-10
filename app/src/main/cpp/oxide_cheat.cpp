@@ -115,7 +115,7 @@ void do_cheat_logic(u64 gworld, u64 local_pawn) {
         if (g_settings.aimbot) {
             if (g_settings.aim_head) z += 60.0f;
             f32 dx = x - cx, dy = y - cy, dz = z - cz;
-            f32 dist = std::sqrt(dx*dx + dy*dy + dz*dz);
+            f32 dist = sqrtf(dx*dx + dy*dy + dz*dz);
             if (dist < best_dist) {
                 best_dist = dist;
                 best_target = a;
@@ -126,10 +126,10 @@ void do_cheat_logic(u64 gworld, u64 local_pawn) {
 
     if (g_settings.aimbot && best_target) {
         f32 dx = tgt_x - cx, dy = tgt_y - cy, dz = tgt_z - cz;
-        f32 dist = std::sqrt(dx*dx + dy*dy + dz*dz);
-        f32 pitch = std::asin(dz / dist) * 57.2958f;
-        f32 yaw = std::atan2(dy, dx) * 57.2958f;
-        if (std::fabs(pitch - cur_pitch) < 30.0f && std::fabs(yaw - cur_yaw) < 30.0f) {
+        f32 dist = sqrtf(dx*dx + dy*dy + dz*dz);
+        f32 pitch = asinf(dz / dist) * 57.2958f;
+        f32 yaw = atan2f(dy, dx) * 57.2958f;
+        if (fabsf(pitch - cur_pitch) < 30.0f && fabsf(yaw - cur_yaw) < 30.0f) {
             write_mem<f32>(pov + 0x30, pitch);
             write_mem<f32>(pov + 0x34, yaw);
         }
